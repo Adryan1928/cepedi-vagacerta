@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import { User } from "../../@types/user";
 import api from "../../lib/api";
 import { INavigationProps } from "../RootStackParams";
+import { useMain } from "../../hooks/useMain";
 
 interface FormStructure {
   email: string;
@@ -20,6 +21,8 @@ const LoginSchema = Yup.object().shape({
 
 export default function useLogin() {
   const { navigate } = useNavigation<INavigationProps>();
+
+  const { setUser } = useMain()
 
   const initialValues: FormStructure = {
     email: "",
@@ -43,6 +46,7 @@ export default function useLogin() {
     );
 
     if (foundUser) {
+      setUser(foundUser)
       handleNavigateToHome();
     } else {
       Alert.alert("Erro no login", "E-mail ou senha incorretos");

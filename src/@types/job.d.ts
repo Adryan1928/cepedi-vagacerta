@@ -6,4 +6,5 @@ export type Job = {
   latitude: number;
   longitude: number;
   salario: number;
+  telefone: string;
 };

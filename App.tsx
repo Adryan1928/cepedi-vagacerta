@@ -9,6 +9,7 @@ import { StatusBar } from "expo-status-bar";
 import { useCallback } from "react";
 
 import Router from "./src/routes";
+import MainProvider from "./src/contexts/main";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -28,9 +29,9 @@ export default function App() {
   onLayoutRootView();
 
   return (
-    <>
+    <MainProvider>
       <StatusBar style="auto" />
       {fontsLoaded && <Router />}
-    </>
+    </MainProvider>
   );
 }

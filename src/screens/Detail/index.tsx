@@ -12,6 +12,7 @@ import {
   Title,
   Wrapper,
 } from "./styles";
+import { Linking } from "react-native";
 
 export default function Detail() {
   const route = useRoute();
@@ -40,7 +41,7 @@ export default function Detail() {
       <Content>
         <Title>{job.titulo}</Title>
         <Description>{job.descricao}</Description>
-        <Button title="Entrar em contato" />
+        <Button title="Entrar em contato" onPress={() => {Linking.openURL('whatsapp://send?text=Me arrume um emprego.&phone=55' + job.telefone)}} />
       </Content>
     </Wrapper>
   );
